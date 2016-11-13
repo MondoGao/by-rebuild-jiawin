@@ -1,0 +1,32 @@
+{
+  "name": "task0",
+  "version": "0.1.0",
+  "description": "task0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://git.bingyan.net/"
+  },
+  "scripts": {
+    "start": "webpack-dev-server --hot --inline",
+    "test": "webpack-dev-server"
+  },
+  "author": {
+    "name": "HugoGao",
+    "email": "mondogao@gmail.com"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^0.25.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-sass": "^2.3.2",
+    "http-proxy-middleware": "^0.17.2",
+    "node-sass": "^3.10.1",
+    "proxy-middleware": "^0.15.0",
+    "sass-loader": "^4.0.2",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.3"
+  }
+}
