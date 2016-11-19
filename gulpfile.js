@@ -3,12 +3,33 @@ var gulp = require('gulp');
 var url = require('url');
 
 var sass = require('gulp-sass');
+var imagemin = require('gulp-imagemin');
 var autoprefixer = require('gulp-autoprefixer');
-var server = require('browser-sync').create();
-// var proxy = require('http-proxy-middleware');
-var proxytest = require('proxy-middleware');
+var base64 = require('gulp-base64');
 
-gulp.task('sass', function() {
+var webpack = require('webpack-stream');
+
+var server = require('browser-sync').create();
+var proxy = require('http-proxy-middleware');
+
+gulp.task('copy:lib', function() {
+    return gulp.src('./dep/font/**/*')
+        .pipe(gulp.dest('./dist/font/lib'));
+});
+gulp.task('copy:app', function() {
+    return gulp .src('./src/app/**/*.html')
+        .pipe(gulp.dest('./dist/app'));
+});
+
+gulp.task('copy', ['copy:lib', 'copy:app']);
+
+gulp.task('img', () =>
+    gulp.src('src/img/**/*')
+        .pipe(imagemin())
+        .pipe(gulp.dest('dist/img'))
+);
+
+gulp.task('sass', ['img'], function() {
     return gulp.src('./src/sass/**/*.scss')
         .pipe(sass({
             outputStyle: 'compressed'
@@ -16,33 +37,43 @@ gulp.task('sass', function() {
         .pipe(autoprefixer({
             'browsers': ['last 2 versions']
         }))
+        .pipe(base64({
+            maxImageSize: 12*1024,
+            debug: true
+        }))
         .pipe(gulp.dest('./dist/css'))
         .pipe(server.reload({stream: true}));
 });
 
-gulp.task('sass-watch', ['sass'], server.reload);
+gulp.task('webpack', function() {
+    return gulp.src(['./src/js/*.js', './dep/js/**/*.js'])
+        .pipe(webpack({
+            output: {
+                filename: 'bundle.js',
+              },
+        }))
+        .pipe(gulp.dest('./dist/js'));
+});
 
-gulp.task('serve', ['sass'], function() {
-    var proxyOptions = url.parse('http://report.hustonline.net');
-    proxyOptions.route = '/pc';
-    var proxyOptions2 = url.parse('http://report.hustonline.net');
-    proxyOptions2.route = '/list';
+gulp.task('sass:watch', ['sass'], server.reload);
+gulp.task('webpack:watch', ['webpack'], server.reload);
+
+gulp.task('serve', ['copy', 'sass', 'img', 'webpack'], function() {
 
     server.init({
         server: {
             baseDir: "./",
             middleware: [
-                // proxy(['/pc/'], {target: 'http://report.hustonline.net', changeOrigin: true}),
-                // proxy(['/mobile/'], {target: 'http://report.hustonline.net', changeOrigin: true}),
-                // proxy(['/list'], {target: 'http://report.hustonline.net', changeOrigin: true}),
-                proxytest(proxyOptions2), // 配置问题？无法代理到/list
+                proxy(['/pc/','/mobile/','/list'], {target: 'http://report.hustonline.net', changeOrigin: true}),
             ]
         },
-        startPath: "./src/app/index.html"
+        startPath: "./dist/app"
     });
 
     gulp.watch("./src/app/**/*.html").on('change', server.reload);
-    gulp.watch('./src/sass/**/*.scss', ['sass-watch']);
+    gulp.watch('./src/sass/**/*.scss', ['sass:watch']);
+    gulp.watch(['./src/js/*.js', './dep/js/**/*.js'], ['webpack:watch']);
+    gulp.watch('./src/img/**/*', ['img']);
 });
 
 gulp.task('default', ['serve']);

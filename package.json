@@ -8,8 +8,7 @@
     "url": "https://git.bingyan.net/"
   },
   "scripts": {
-    "start": "webpack-dev-server --hot --inline",
-    "test": "webpack-dev-server"
+    "start": "gulp"
   },
   "author": {
     "name": "HugoGao",
@@ -17,16 +16,20 @@
   },
   "license": "ISC",
   "devDependencies": {
-    "css-loader": "^0.25.0",
+    "css-loader": "^0.26.0",
+    "file-loader": "^0.9.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
+    "gulp-base64": "^0.1.3",
+    "gulp-imagemin": "^3.1.1",
     "gulp-sass": "^2.3.2",
     "http-proxy-middleware": "^0.17.2",
-    "node-sass": "^3.10.1",
+    "node-sass": "^3.13.0",
     "proxy-middleware": "^0.15.0",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
-    "webpack": "^1.13.3"
+    "webpack": "^1.13.3",
+    "webpack-stream": "^3.2.0"
   }
 }
