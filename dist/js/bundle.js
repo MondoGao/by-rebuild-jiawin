@@ -51,12 +51,9 @@
 
 /***/ },
 /* 1 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	var template = __webpack_require__(2);
-
-	document.querySelector('header').innerHTML = template('helloworld', {data:"hello world"});
-
+	
 
 /***/ },
 /* 2 */
@@ -239,13 +236,7 @@
 	    if (true) {!(__WEBPACK_AMD_DEFINE_RESULT__ = function() {return template;}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));} else if (typeof exports !== 'undefined') {module.exports = template;} else {this.template = template;}
 	    
 	    /*v:1*/
-	template('helloworld',function($data,$filename
-	/**/) {
-	'use strict';var $utils=this,$helpers=$utils.$helpers,$escape=$utils.$escape,data=$data.data,$out='';$out+='<h1>';
-	$out+=$escape(data);
-	$out+='</h1> <style media="screen"> h1 { color: red; } </style> ';
-	return new String($out);
-	});
+	template('list-item','<li>tedst</li> ');
 
 	}()
 

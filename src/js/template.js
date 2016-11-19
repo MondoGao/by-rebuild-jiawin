@@ -175,12 +175,6 @@
     if (typeof define === 'function') {define(function() {return template;});} else if (typeof exports !== 'undefined') {module.exports = template;} else {this.template = template;}
     
     /*v:1*/
-template('helloworld',function($data,$filename
-/**/) {
-'use strict';var $utils=this,$helpers=$utils.$helpers,$escape=$utils.$escape,data=$data.data,$out='';$out+='<h1>';
-$out+=$escape(data);
-$out+='</h1> <style media="screen"> h1 { color: red; } </style> ';
-return new String($out);
-});
+template('list-item','<li>tedst</li> ');
 
 }()
