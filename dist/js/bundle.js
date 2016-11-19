@@ -45,36 +45,201 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(1);
-	module.exports = __webpack_require__(2);
+	__webpack_require__(2);
+	module.exports = __webpack_require__(3);
 
 
 /***/ },
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
-	
+	var template = __webpack_require__(2);
 
-	console.log(__webpack_require__(2));
-
-	var html = __webpack_require__(3);
-	document.querySelector('header').innerHTML = html({data:"hello world"});
+	document.querySelector('header').innerHTML = template('helloworld', {data:"hello world"});
 
 
 /***/ },
 /* 2 */
-/***/ function(module, exports) {
-
-	var test = "success!";
-
-	module.exports = test;
-
-
-/***/ },
-/* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var template=__webpack_require__(4);
-	module.exports=template('src/app/tmpl/helloworld',function($data,$filename
+	var __WEBPACK_AMD_DEFINE_RESULT__;/*TMODJS:{"version":"1.0.0"}*/
+	!function () {
+
+	    function template (filename, content) {
+	        return (
+	            /string|function/.test(typeof content)
+	            ? compile : renderFile
+	        )(filename, content);
+	    };
+
+
+	    var cache = template.cache = {};
+	    var String = this.String;
+
+	    function toString (value, type) {
+
+	        if (typeof value !== 'string') {
+
+	            type = typeof value;
+	            if (type === 'number') {
+	                value += '';
+	            } else if (type === 'function') {
+	                value = toString(value.call(value));
+	            } else {
+	                value = '';
+	            }
+	        }
+
+	        return value;
+
+	    };
+
+
+	    var escapeMap = {
+	        "<": "&#60;",
+	        ">": "&#62;",
+	        '"': "&#34;",
+	        "'": "&#39;",
+	        "&": "&#38;"
+	    };
+
+
+	    function escapeFn (s) {
+	        return escapeMap[s];
+	    }
+
+
+	    function escapeHTML (content) {
+	        return toString(content)
+	        .replace(/&(?![\w#]+;)|[<>"']/g, escapeFn);
+	    };
+
+
+	    var isArray = Array.isArray || function(obj) {
+	        return ({}).toString.call(obj) === '[object Array]';
+	    };
+
+
+	    function each (data, callback) {
+	        if (isArray(data)) {
+	            for (var i = 0, len = data.length; i < len; i++) {
+	                callback.call(data, data[i], i, data);
+	            }
+	        } else {
+	            for (i in data) {
+	                callback.call(data, data[i], i);
+	            }
+	        }
+	    };
+
+
+	    function resolve (from, to) {
+	        var DOUBLE_DOT_RE = /(\/)[^/]+\1\.\.\1/;
+	        var dirname = ('./' + from).replace(/[^/]+$/, "");
+	        var filename = dirname + to;
+	        filename = filename.replace(/\/\.\//g, "/");
+	        while (filename.match(DOUBLE_DOT_RE)) {
+	            filename = filename.replace(DOUBLE_DOT_RE, "/");
+	        }
+	        return filename;
+	    };
+
+
+	    var utils = template.utils = {
+
+	        $helpers: {},
+
+	        $include: function (filename, data, from) {
+	            filename = resolve(from, filename);
+	            return renderFile(filename, data);
+	        },
+
+	        $string: toString,
+
+	        $escape: escapeHTML,
+
+	        $each: each
+	        
+	    };
+
+
+	    var helpers = template.helpers = utils.$helpers;
+
+
+	    function renderFile (filename, data) {
+	        var fn = template.get(filename) || showDebugInfo({
+	            filename: filename,
+	            name: 'Render Error',
+	            message: 'Template not found'
+	        });
+	        return data ? fn(data) : fn; 
+	    };
+
+
+	    function compile (filename, fn) {
+
+	        if (typeof fn === 'string') {
+	            var string = fn;
+	            fn = function () {
+	                return new String(string);
+	            };
+	        }
+
+	        var render = cache[filename] = function (data) {
+	            try {
+	                return new fn(data, filename) + '';
+	            } catch (e) {
+	                return showDebugInfo(e)();
+	            }
+	        };
+
+	        render.prototype = fn.prototype = utils;
+	        render.toString = function () {
+	            return fn + '';
+	        };
+
+	        return render;
+	    };
+
+
+	    function showDebugInfo (e) {
+
+	        var type = "{Template Error}";
+	        var message = e.stack || '';
+
+	        if (message) {
+	            // 利用报错堆栈信息
+	            message = message.split('\n').slice(0,2).join('\n');
+	        } else {
+	            // 调试版本，直接给出模板语句行
+	            for (var name in e) {
+	                message += "<" + name + ">\n" + e[name] + "\n\n";
+	            }  
+	        }
+
+	        return function () {
+	            if (typeof console === "object") {
+	                console.error(type + "\n\n" + message);
+	            }
+	            return type;
+	        };
+	    };
+
+
+	    template.get = function (filename) {
+	        return cache[filename.replace(/^\.\//, '')];
+	    };
+
+
+	    template.helper = function (name, helper) {
+	        helpers[name] = helper;
+	    };
+
+
+	    if (true) {!(__WEBPACK_AMD_DEFINE_RESULT__ = function() {return template;}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));} else if (typeof exports !== 'undefined') {module.exports = template;} else {this.template = template;}
+	    
+	    /*v:1*/
+	template('helloworld',function($data,$filename
 	/**/) {
 	'use strict';var $utils=this,$helpers=$utils.$helpers,$escape=$utils.$escape,data=$data.data,$out='';$out+='<h1>';
 	$out+=$escape(data);
@@ -82,89 +247,16 @@
 	return new String($out);
 	});
 
+	}()
+
 /***/ },
-/* 4 */
+/* 3 */
 /***/ function(module, exports) {
 
-	/*TMODJS:{}*/
-	!function () {
-		function a(a, b) {
-			return (/string|function/.test(typeof b) ? h : g)(a, b)
-		}
+	var test = "success!";
 
-		function b(a, c) {
-			return "string" != typeof a && (c = typeof a, "number" === c ? a += "" : a = "function" === c ? b(a.call(a)) : ""), a
-		}
+	module.exports = test;
 
-		function c(a) {
-			return l[a]
-		}
-
-		function d(a) {
-			return b(a).replace(/&(?![\w#]+;)|[<>"']/g, c)
-		}
-
-		function e(a, b) {
-			if (m(a))for (var c = 0, d = a.length; d > c; c++)b.call(a, a[c], c, a); else for (c in a)b.call(a, a[c], c)
-		}
-
-		function f(a, b) {
-			var c = /(\/)[^\/]+\1\.\.\1/, d = ("./" + a).replace(/[^\/]+$/, ""), e = d + b;
-			for (e = e.replace(/\/\.\//g, "/"); e.match(c);)e = e.replace(c, "/");
-			return e
-		}
-
-		function g(b, c) {
-			var d = a.get(b) || i({filename: b, name: "Render Error", message: "Template not found"});
-			return c ? d(c) : d
-		}
-
-		function h(a, b) {
-			if ("string" == typeof b) {
-				var c = b;
-				b = function () {
-					return new k(c)
-				}
-			}
-			var d = j[a] = function (c) {
-				try {
-					return new b(c, a) + ""
-				} catch (d) {
-					return i(d)()
-				}
-			};
-			return d.prototype = b.prototype = n, d.toString = function () {
-				return b + ""
-			}, d
-		}
-
-		function i(a) {
-			var b = "{Template Error}", c = a.stack || "";
-			if (c)c = c.split("\n").slice(0, 2).join("\n"); else for (var d in a)c += "<" + d + ">\n" + a[d] + "\n\n";
-			return function () {
-				return "object" == typeof console && console.error(b + "\n\n" + c), b
-			}
-		}
-
-		var j = a.cache = {}, k = this.String, l = {
-			"<": "&#60;",
-			">": "&#62;",
-			'"': "&#34;",
-			"'": "&#39;",
-			"&": "&#38;"
-		}, m = Array.isArray || function (a) {
-				return "[object Array]" === {}.toString.call(a)
-			}, n = a.utils = {
-			$helpers: {}, $include: function (a, b, c) {
-				return a = f(c, a), g(a, b)
-			}, $string: b, $escape: d, $each: e
-		}, o = a.helpers = n.$helpers;
-		a.get = function (a) {
-			return j[a.replace(/^\.\//, "")]
-		}, a.helper = function (a, b) {
-			o[a] = b
-		}, module.exports = a
-	}();
 
 /***/ }
 /******/ ]);

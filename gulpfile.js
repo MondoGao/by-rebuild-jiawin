@@ -46,20 +46,20 @@ gulp.task('sass', ['img'], function() {
         .pipe(server.reload({stream: true}));
 });
 
-gulp.task('webpack', function() {
+gulp.task('tmodjs', function(){
+    return gulp.src('./src/app/tmpl/**/*.tmpl')
+            .pipe(tmodjs({
+                templateBase: './src/app/tmpl'
+            }))
+            .pipe(gulp.dest('./src/js'));
+});
+
+gulp.task('webpack', ['tmodjs'], function() {
     return gulp.src(['./src/js/*.js'])
         .pipe(webpack({
             output: {
                 filename: 'bundle.js',
               },
-              module: {
-                loaders: [
-                  {
-                      test: /\.tmpl$/,
-                      loader: "tmodjs",
-                  }
-                ]
-              }
         }))
         .pipe(gulp.dest('./dist/js'));
 });
@@ -68,7 +68,7 @@ gulp.task('sass:watch', ['sass'], server.reload);
 gulp.task('webpack:watch', ['webpack'], server.reload);
 gulp.task('app:watch', ['copy:app'], server.reload);
 
-gulp.task('serve', ['copy', 'sass', 'img', 'webpack'], function() {
+gulp.task('serve', ['copy', 'sass', 'img', 'webpack', 'tmodjs'], function() {
 
     server.init({
         server: {
