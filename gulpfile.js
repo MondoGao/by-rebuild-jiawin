@@ -8,6 +8,7 @@ var autoprefixer = require('gulp-autoprefixer');
 var base64 = require('gulp-base64');
 
 var webpack = require('webpack-stream');
+var tmodjs = require('gulp-tmod');
 
 var server = require('browser-sync').create();
 var proxy = require('http-proxy-middleware');
@@ -46,17 +47,26 @@ gulp.task('sass', ['img'], function() {
 });
 
 gulp.task('webpack', function() {
-    return gulp.src(['./src/js/*.js', './dep/js/**/*.js'])
+    return gulp.src(['./src/js/*.js'])
         .pipe(webpack({
             output: {
                 filename: 'bundle.js',
               },
+              module: {
+                loaders: [
+                  {
+                      test: /\.tmpl$/,
+                      loader: "tmodjs",
+                  }
+                ]
+              }
         }))
         .pipe(gulp.dest('./dist/js'));
 });
 
 gulp.task('sass:watch', ['sass'], server.reload);
 gulp.task('webpack:watch', ['webpack'], server.reload);
+gulp.task('app:watch', ['copy:app'], server.reload);
 
 gulp.task('serve', ['copy', 'sass', 'img', 'webpack'], function() {
 
@@ -64,13 +74,13 @@ gulp.task('serve', ['copy', 'sass', 'img', 'webpack'], function() {
         server: {
             baseDir: "./",
             middleware: [
-                proxy(['/pc/','/mobile/','/list'], {target: 'http://report.hustonline.net', changeOrigin: true}),
+                // proxy(['/pc/','/mobile/','/list'], {target: 'http://report.hustonline.net', changeOrigin: true}),
             ]
         },
         startPath: "./dist/app"
     });
 
-    gulp.watch("./src/app/**/*.html").on('change', server.reload);
+    gulp.watch("./src/app/**/*.html", ['app:watch']);
     gulp.watch('./src/sass/**/*.scss', ['sass:watch']);
     gulp.watch(['./src/js/*.js', './dep/js/**/*.js'], ['webpack:watch']);
     gulp.watch('./src/img/**/*', ['img']);
