@@ -1,3 +1,80 @@
-body {
-    background: white url(../img/logo.png);
+@import "_reset";
+
+#header {
+  height: 50px;
+  background-color: #222;
+  color: #fff;
+  .nav-bar {
+    display: table;
+    width: 100%;
+    li {
+      display: table-cell;
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+    }
+  }
+  #nav-logo {
+    width: auto;
+    a {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      vertical-align: middle;
+      background: url("../img/logo.png") no-repeat center;
+      background-size: contain;
+    }
+  }
+  #nav-list {
+    display: none;
+  }
+  &.show-list {
+    #nav-list {
+      display: block;
+      li {
+        display: block;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        background: #323232;
+        text-align: center;
+        a {
+          height: 50px;
+          line-height: 50px;
+        }
+      }
+    }
+  }
+}
+
+#aim {
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
+  
+  #aim-slide {
+    width: 100%;
+    white-space: nowrap;
+    transform: translateX(-100px);
+    img {
+      width: 100%;
+      vertical-align: top;
+    }
+  }
+  .pagination {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 10px;
+    text-align: center;
+    li {
+      margin: 0 3px;
+      width: 6px;
+      height: 6px;
+      border: 1px solid rgba(255,255,255,0.5);
+      border-radius: 6px;
+      &.active {
+        background: #fff;
+      }
+    }
+  }
 }
