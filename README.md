@@ -1,8 +1,26 @@
-## Task0
+# Task0
 
 重构觉唯设计官网，静态数据可以用爬虫实现
 
+## 项目须知
+### 开发环境
+#### 安装/配置开发环境
+```
+npm install
+```
+#### 运行
+```
+npm start
+```
+
+### 依赖库
+- font-awesome
+
 ## 更新记录
+### 0.0.2 - 2016-11-21
+#### Added
+- 增加项目开发环境架构
+- 增加电脑端小屏下（width < 500px）的样式和页面架构
 
 ### 0.0.1 - 2016-11-02
 #### Added
@@ -14,6 +32,7 @@
 - 尝试使用 node 完成爬虫
 
 ### 完成
+- 学习 artTemplate，使用 tmodjs+gulp+webpack 进行打包
 - 使用 http-proxy-middleware 和 browser-sync 配合代理
 	- **不知原因，使用 proxy-middleware 进行代理出现异常表现如下**
 		- 配置 /list 代理至 http://report.hustonline.net，访问 localhost/list 跳转到 localhost/pc/index.html（使用 http-proxy-middleware 可以成功代理）
