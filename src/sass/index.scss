@@ -89,7 +89,6 @@ body {
   padding: 20px 0;
   ul {
     text-align: center;
-
     li {
       margin: 0 10px 20px;
       padding: 10px;
@@ -103,6 +102,7 @@ body {
         padding: 8px 5px;
         line-height: 18px;
         color: #444;
+        transition: color .3s ease-out;
       }
       img {
         width: 280px;
@@ -120,6 +120,11 @@ body {
           }
         }
       }
+      &:hover {
+        figcaption {
+          color: #00c3b6;
+        }
+      }
     }
   }
 }
@@ -132,6 +137,7 @@ body {
       figure {
         position: relative;
         width: 100%;
+        overflow: hidden;
       }
       img {
         width: 100%;
@@ -147,11 +153,23 @@ body {
         background-color: rgba(0, 195, 182, .8);
         color: #fff;
         font-size: 40px;
+        transform: scale(2);
+        opacity: 0;
+        transition: all .2s;
+        i {
+          vertical-align: middle;
+        }
         &::before {
           display:inline-block;
           content: "";
           height: 100%;
           vertical-align: middle;
+        }
+      }
+      &:hover {
+        figcaption {
+          transform: scale(1);
+          opacity: 1;
         }
       }
     }
@@ -167,6 +185,10 @@ body {
       font-size: 14px;
       background-color: #00c3b6;
       color: #fff;
+      transition: all 0.3s ease-out;
+      &:hover {
+        background-color: #ea4c89;
+      }
     }
   }
 }
@@ -205,6 +227,31 @@ body {
   }
 }
 
+#feature {
+  ul {
+    width: 100%;
+    background-color: #fff;
+    li {
+      margin-bottom: 3px;
+      width: 100%;
+      text-align: center;
+      background-color: #f1f1f1;
+      overflow-x: hidden;
+      a {
+        display: inline-block;
+        width: 100%;
+        height: 200px;
+        background-position: center;
+      }
+      @for $i from 1 through 4 {
+        &:nth-child(#{$i}) a {
+          background: url("../img/feature_" + $i + ".jpg") center;
+        }
+      }
+    }
+  }
+}
+
 #footer {
   padding: 0 10px;
   text-align: center;
@@ -214,5 +261,8 @@ body {
     padding: 15px 0 25px;
     border-top: 1px solid rgba(255,255,255,0.065);
     font-size: 12px;
+  }
+  a {
+    color: #00c3b6;
   }
 }
