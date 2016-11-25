@@ -12,6 +12,8 @@ var webpack = require("webpack-stream");
 var server = require("browser-sync").create();
 var proxy = require("http-proxy-middleware");
 
+var crawler = require('./server/index');
+
 gulp.task("img", () =>
     gulp.src("src/img/**/*")
         .pipe(imagemin())
@@ -66,15 +68,17 @@ gulp.task("webpack", ["tmodjs"], function() {
 });
 
 gulp.task("serve", ["lib:copy", "app:copy", "sass", "img", "webpack", "tmodjs"], function() {
+    crawler.start();
 
     server.init({
         server: {
             baseDir: "./",
             middleware: [
-                // proxy(["/pc/","/mobile/","/list"], {target: "http://report.hustonline.net", changeOrigin: true}),
+                proxy(["/page", "/gallery", "/slider", "/notice"], {target: "http://localhost:2999", changeOrigin: true}),
             ]
         },
-        startPath: "./dist/app"
+        startPath: "./dist/app",
+        port: 3000
     });
 
     gulp.watch("./src/app/**/*.html", ["app:copy"]);

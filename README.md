@@ -17,6 +17,10 @@ npm start
 - font-awesome
 
 ## 更新记录
+### 0.2.0 - 2015-11-25
+#### Added
+- 增加对觉唯官网的爬虫服务器，可动态获取数据，默认端口3002，已配置代理
+
 ### 0.1.0 - 2016-11-25
 #### Added
 - 增加 500px - 768px 的响应
@@ -33,9 +37,9 @@ npm start
 
 ## 学习纪录
 ### 准备
-- 尝试使用 node 完成爬虫
 
 ### 完成
+- 学习 node 搭建服务器和爬虫
 - 学习 artTemplate，使用 tmodjs+gulp+webpack 进行打包
 - 使用 http-proxy-middleware 和 browser-sync 配合代理
 	- **不知原因，使用 proxy-middleware 进行代理出现异常表现如下**
