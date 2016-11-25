@@ -39,7 +39,7 @@ gulp.task("sass", ["img"], function() {
             "browsers": ["last 2 versions"]
         }))
         .pipe(base64({
-            maxImageSize: 12*1024,
+            maxImageSize: 12 * 1024,
             debug: true
         }))
         .pipe(gulp.dest("./dist/css"))
@@ -58,14 +58,14 @@ gulp.task("webpack", ["tmodjs"], function() {
     return gulp.src(["./src/js/*.js"])
         .pipe(webpack({
             output: {
-                filename: "bundle.js",
-              },
+                filename: "bundle.js"
+              }
         }))
         .pipe(gulp.dest("./dist/js"))
         .pipe(server.stream());
 });
 
-gulp.task("serve", ["lib:copy", "app:copy","sass", "img", "webpack", "tmodjs"], function() {
+gulp.task("serve", ["lib:copy", "app:copy", "sass", "img", "webpack", "tmodjs"], function() {
 
     server.init({
         server: {
