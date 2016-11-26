@@ -45,15 +45,47 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(1);
-	__webpack_require__(2);
-	module.exports = __webpack_require__(3);
+	module.exports = __webpack_require__(2);
 
 
 /***/ },
 /* 1 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	
+	var template = __webpack_require__(2);
+
+	(function () {
+
+	    var funRender = function (e) {
+	        console.log(e);
+	        var self = e.currentTarget;
+	        var wrap = document.createElement('div');
+	        wrap.innerHTML = template(self.tplName, {
+	            data: self.response
+	        });
+	        while (wrap.firstElementChild) {
+	            document.querySelector(self.queryEle).appendChild(wrap.firstElementChild);
+	        }
+	        if (self.callBack && self.callBack()) ;// 空语句
+	    }
+
+	    var funGetCrawler = function (queryEle, tplName, url, callBack) {
+	        var req = new XMLHttpRequest();
+	        req.addEventListener('load', funRender);
+	        req.responseType = 'json';
+	        req.queryEle = queryEle;
+	        req.tplName = tplName;
+	        req.callBack = callBack;
+	        req.open('get', url, true);
+	        req.send();
+	    };
+	    funGetCrawler("#notice ul",'notice-item', '/notice');
+	    funGetCrawler("#artical ul",'artical-item', '/page?page=1');
+	    funGetCrawler("#gallery-wrap",'gallery-item', '/gallery');
+	    funGetCrawler("#aim-slide",'slider-item', '/slider');
+	})();
+
+
 
 /***/ },
 /* 2 */
@@ -236,18 +268,60 @@
 	    if (true) {!(__WEBPACK_AMD_DEFINE_RESULT__ = function() {return template;}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));} else if (typeof exports !== 'undefined') {module.exports = template;} else {this.template = template;}
 	    
 	    /*v:1*/
-	template('list-item','<li>tedst</li> ');
+	template('artical-item',function($data,$filename
+	/**/) {
+	'use strict';var $utils=this,$helpers=$utils.$helpers,$each=$utils.$each,data=$data.data,value=$data.value,$index=$data.$index,$escape=$utils.$escape,$out='';$each(data,function(value,$index){
+	$out+=' <li> <a href="#"> <figure> <img src="';
+	$out+=$escape(value.src);
+	$out+='" alt=""> <figcaption> ';
+	$out+=$escape(value.title);
+	$out+=' </figcaption> </figure> </a> <p> <time class="time">';
+	$out+=$escape(value.time);
+	$out+='</time> <span><i class="fa fa-comment"></i>';
+	$out+=$escape(value.commentNum);
+	$out+='</span> <span><i class="fa fa-heart"></i>';
+	$out+=$escape(value.viewNum);
+	$out+='</span> </p> </li> ';
+	});
+	return new String($out);
+	});/*v:1*/
+	template('gallery-item',function($data,$filename
+	/**/) {
+	'use strict';var $utils=this,$helpers=$utils.$helpers,$each=$utils.$each,data=$data.data,value=$data.value,$index=$data.$index,$escape=$utils.$escape,$out='';$each(data,function(value,$index){
+	$out+=' <li> <figure> <img src="';
+	$out+=$escape(value.src);
+	$out+='" alt="';
+	$out+=$escape(value.title);
+	$out+='"> <figcaption><i class="fa fa-link"></i></figcaption> </figure> </li> ';
+	});
+	$out+=' ';
+	return new String($out);
+	});/*v:1*/
+	template('notice-item',function($data,$filename
+	/**/) {
+	'use strict';var $utils=this,$helpers=$utils.$helpers,$each=$utils.$each,data=$data.data,value=$data.value,$index=$data.$index,$escape=$utils.$escape,$out='';$each(data,function(value,$index){
+	$out+=' <li><span>';
+	$out+=$escape(value.time);
+	$out+='</span>';
+	$out+=$escape(value.title);
+	$out+='</li> ';
+	});
+	$out+=' ';
+	return new String($out);
+	});/*v:1*/
+	template('slider-item',function($data,$filename
+	/**/) {
+	'use strict';var $utils=this,$helpers=$utils.$helpers,$each=$utils.$each,data=$data.data,value=$data.value,$index=$data.$index,$escape=$utils.$escape,$out='';$each(data,function(value,$index){
+	$out+=' <li><a href="#"><img src="';
+	$out+=$escape(value.src);
+	$out+='" alt="';
+	$out+=$escape(value.title);
+	$out+='"></a></li> ';
+	});
+	return new String($out);
+	});
 
 	}()
-
-/***/ },
-/* 3 */
-/***/ function(module, exports) {
-
-	var test = "success!";
-
-	module.exports = test;
-
 
 /***/ }
 /******/ ]);

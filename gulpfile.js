@@ -84,7 +84,7 @@ gulp.task("serve", ["lib:copy", "app:copy", "sass", "img", "webpack", "tmodjs"],
     gulp.watch("./src/app/**/*.html", ["app:copy"]);
     gulp.watch("./src/sass/**/*.scss", ["sass"]);
     gulp.watch("./src/js/*.js", ["webpack"]);
-    gulp.watch("./src/app/tmpl/**/*.tmpl", ["webpack", "tmodjs"]);
+    gulp.watch("./src/tmpl/**/*.tmpl", ["webpack", "tmodjs"]);
     gulp.watch("./src/img/**/*", ["img"]);
 });
 

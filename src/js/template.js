@@ -175,6 +175,57 @@
     if (typeof define === 'function') {define(function() {return template;});} else if (typeof exports !== 'undefined') {module.exports = template;} else {this.template = template;}
     
     /*v:1*/
-template('list-item','<li>tedst</li> ');
+template('artical-item',function($data,$filename
+/**/) {
+'use strict';var $utils=this,$helpers=$utils.$helpers,$each=$utils.$each,data=$data.data,value=$data.value,$index=$data.$index,$escape=$utils.$escape,$out='';$each(data,function(value,$index){
+$out+=' <li> <a href="#"> <figure> <img src="';
+$out+=$escape(value.src);
+$out+='" alt=""> <figcaption> ';
+$out+=$escape(value.title);
+$out+=' </figcaption> </figure> </a> <p> <time class="time">';
+$out+=$escape(value.time);
+$out+='</time> <span><i class="fa fa-comment"></i>';
+$out+=$escape(value.commentNum);
+$out+='</span> <span><i class="fa fa-heart"></i>';
+$out+=$escape(value.viewNum);
+$out+='</span> </p> </li> ';
+});
+return new String($out);
+});/*v:1*/
+template('gallery-item',function($data,$filename
+/**/) {
+'use strict';var $utils=this,$helpers=$utils.$helpers,$each=$utils.$each,data=$data.data,value=$data.value,$index=$data.$index,$escape=$utils.$escape,$out='';$each(data,function(value,$index){
+$out+=' <li> <figure> <img src="';
+$out+=$escape(value.src);
+$out+='" alt="';
+$out+=$escape(value.title);
+$out+='"> <figcaption><i class="fa fa-link"></i></figcaption> </figure> </li> ';
+});
+$out+=' ';
+return new String($out);
+});/*v:1*/
+template('notice-item',function($data,$filename
+/**/) {
+'use strict';var $utils=this,$helpers=$utils.$helpers,$each=$utils.$each,data=$data.data,value=$data.value,$index=$data.$index,$escape=$utils.$escape,$out='';$each(data,function(value,$index){
+$out+=' <li><span>';
+$out+=$escape(value.time);
+$out+='</span>';
+$out+=$escape(value.title);
+$out+='</li> ';
+});
+$out+=' ';
+return new String($out);
+});/*v:1*/
+template('slider-item',function($data,$filename
+/**/) {
+'use strict';var $utils=this,$helpers=$utils.$helpers,$each=$utils.$each,data=$data.data,value=$data.value,$index=$data.$index,$escape=$utils.$escape,$out='';$each(data,function(value,$index){
+$out+=' <li><a href="#"><img src="';
+$out+=$escape(value.src);
+$out+='" alt="';
+$out+=$escape(value.title);
+$out+='"></a></li> ';
+});
+return new String($out);
+});
 
 }()

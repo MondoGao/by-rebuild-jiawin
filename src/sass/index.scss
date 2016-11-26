@@ -97,6 +97,7 @@ html {
     > span {
       margin-right: 15px;
       font-size: 16px;
+      line-height: 50px;
     }
   }
   li {
@@ -157,6 +158,9 @@ html {
         line-height: 18px;
         color: #444;
         transition: color .3s ease-out;
+        white-space: nowrap;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
       }
       img {
         width: 280px;
@@ -300,7 +304,7 @@ html {
       }
       @for $i from 1 through 4 {
         &:nth-child(#{$i}) a {
-          background: url("../img/feature_" + $i + ".jpg") center;
+          background: url("../img/feature_" + $i + ".jpg") center no-repeat;
         }
       }
     }

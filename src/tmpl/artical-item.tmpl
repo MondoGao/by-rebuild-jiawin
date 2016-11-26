@@ -1,0 +1,17 @@
+{{each data as value}}
+    <li>
+        <a href="#">
+            <figure>
+                <img src="{{value.src}}" alt="">
+                <figcaption>
+                    {{value.title}}
+                </figcaption>
+            </figure>
+        </a>
+        <p>
+            <time class="time">{{value.time}}</time>
+            <span><i class="fa fa-comment"></i>{{value.commentNum}}</span>
+            <span><i class="fa fa-heart"></i>{{value.viewNum}}</span>
+        </p>
+    </li>
+{{/each}}
