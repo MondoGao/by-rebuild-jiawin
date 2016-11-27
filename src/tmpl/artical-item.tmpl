@@ -1,17 +1,25 @@
 {{each data as value}}
     <li>
-        <a href="#">
-            <figure>
-                <img src="{{value.src}}" alt="">
+        <figure>
+            <a href="#">
+                <div class="img-wrap"><img src="{{value.src}}" alt="{{value.title}}"></div>
                 <figcaption>
                     {{value.title}}
                 </figcaption>
-            </figure>
-        </a>
+                <div class="extra">
+                    <i class="fa fa-bookmark"></i>
+                    <a href="#">{{value.category}}</a>
+                    <span>{{value.viewNum}}
+                        <i class="fa fa-fire"></i>
+                    </span>
+                </div>
+            </a>
+        </figure>
         <p>
             <time class="time">{{value.time}}</time>
             <span><i class="fa fa-comment"></i>{{value.commentNum}}</span>
             <span><i class="fa fa-heart"></i>{{value.viewNum}}</span>
         </p>
+
     </li>
 {{/each}}

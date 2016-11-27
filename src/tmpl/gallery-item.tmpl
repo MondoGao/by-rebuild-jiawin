@@ -4,5 +4,16 @@
             <img src="{{value.src}}" alt="{{value.title}}">
             <figcaption><i class="fa fa-link"></i></figcaption>
         </figure>
+        <div class="extra">
+            <h4>
+                <a href="#">{{value.title}}</a>
+            </h4>
+            <p class="meta">
+                <time class="time">{{value.time}}</time>
+                <span class="comment-num"><i class="fa fa-comment-o"></i>{{value.commentNum}}</span>
+                <span class="view-num"><i class="fa fa-eye"></i>{{value.viewNum}}</span>
+                <span class="heart-num"><i class="fa fa-heart-o"></i>{{value.heartNum}}</span>
+            </p>
+        </div>
     </li>
 {{/each}}

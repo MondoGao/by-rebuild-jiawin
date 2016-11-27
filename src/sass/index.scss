@@ -5,6 +5,14 @@ html {
   font-size: 12px;
 }
 
+.container {
+  max-width: 1260px;
+  margin: 0 auto;
+}
+
+.extra {
+  display: none;
+}
 
 #header {
   position: fixed;
@@ -24,6 +32,7 @@ html {
       width: 50px;
       height: 50px;
       line-height: 50px;
+      font-size: 16px;
       text-align: center;
     }
   }
@@ -110,12 +119,16 @@ html {
   position: relative;
   width: 100%;
   overflow-x: hidden;
+  background-color: #fff;
   #aim-slide {
     width: 100%;
     white-space: nowrap;
-    transform: translateX(-100px);
-    img {
+    li {
       width: 100%;
+      text-align: center;
+    }
+    img {
+      width: 652px;
       vertical-align: top;
     }
   }
@@ -141,10 +154,10 @@ html {
 #artical {
   padding: 20px 0;
   background: #f1f1f1;
-
   ul {
     text-align: center;
     li {
+      position: relative;
       margin: 0 10px 20px;
       padding: 10px;
       padding-bottom: 0;
@@ -162,9 +175,16 @@ html {
         overflow-x: hidden;
         text-overflow: ellipsis;
       }
+      .img-wrap {
+        background-color: #000;
+        font-size: 0;
+        overflow: hidden;
+      }
       img {
         width: 280px;
         height: 180px;
+        opacity: 1;
+        transition: all 0.2s cubic-bezier(0.33, 0, 0.2, 1);
       }
       p {
         border-top: 1px solid #f2f2f2;
@@ -193,6 +213,9 @@ html {
     width: 100%;
     li {
       width: 50%;
+      .extra {
+        transition: all .2s cubic-bezier(0.33,0,0.2,1);
+      }
       figure {
         position: relative;
         width: 100%;
@@ -233,7 +256,7 @@ html {
       }
     }
   }
-  > div {
+  div.btn {
     width: 100%;
     text-align: center;
     a {
@@ -261,6 +284,7 @@ html {
       padding: 0% 10px;
       width: 33.3%;
       text-align: center;
+      vertical-align: top;
       p.icon-wrap {
         margin-bottom: 10px;
         i {
@@ -291,7 +315,7 @@ html {
     width: 100%;
     background-color: #fff;
     li {
-      margin-bottom: 3px;
+      margin-bottom: 2px;
       width: 100%;
       text-align: center;
       background-color: #f1f1f1;
@@ -316,7 +340,7 @@ html {
   text-align: center;
   background-color: #222;
   color: #999;
-  > p {
+  .container > p {
     padding: 15px 0 25px;
     border-top: 1px solid rgba(255, 255, 255, 0.065);
     font-size: 12px;
@@ -372,81 +396,361 @@ html {
       }
 
     }
-      #social {
-        li {
-          display: block;
-          margin: 0 0 5px;
+    #social {
+      li {
+        display: block;
+        margin: 0 0 5px;
+      }
+      input {
+        border-radius: 2px;
+        font: inherit;
+        transition: all .3s ease-out;
+      }
+      @include placeholder(#444444);
+      input.email {
+        margin: 0 3px 0 0;
+        padding: 0 5px;
+        width: 155px;
+        height: 26px;
+        line-height: 26px;
+        border: 1px solid #323232;
+        background-color: #1c1c1c;
+        color: rgba(255, 255, 255, 0.9);
+        outline: none;
+        &:focus {
+          background-color: #111;
+          border-color: #484848;;
         }
-        input {
-          border-radius: 2px;
-          font: inherit;
-          transition: all .3s ease-out;
+      }
+      input.submit {
+        padding: 0px 10px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        height: 28px;
+        color: rgba(255, 255, 255, 0.7);
+        background-color: #00a398;
+        box-shadow: none;
+        cursor: pointer;
+        &:hover {
+          color: #fff;
+          box-shadow: 0 2px 0 rgba(0, 0, 0, 0.25);
         }
-        @include placeholder(#444444);
-        input.email {
-          margin: 0 3px 0 0;
-          padding: 0 5px;
-          width: 155px;
-          height: 26px;
-          line-height: 26px;
-          border: 1px solid #323232;
-          background-color: #1c1c1c;
-          color: rgba(255, 255, 255, 0.9);
-          outline: none;
-          &:focus {
-            background-color: #111;
-            border-color: #484848;;
-          }
-        }
-        input.submit {
-          padding: 0px 10px;
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          height: 28px;
-          color: rgba(255, 255, 255, 0.7);
-          background-color: #00a398;
-          box-shadow: none;
-          cursor: pointer;
+      }
+      .social-icon {
+        margin-top: 20px;
+        i {
+          display: inline-block;
+          margin-right: 5px;
+          width: 30px;
+          height: 30px;
+          line-height: 30px;
+          border-radius: 5px;
+          background-color: rgba(0, 0, 0, 0.2);
+          color: rgba(255, 255, 255, 0.5);
+          text-align: center;
+          font-size: 14px;
+          text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+          transition: all 0.3s ease-out;
           &:hover {
-            color: #fff;
-            box-shadow: 0 2px 0 rgba(0,0,0,0.25);
-          }
-        }
-        .social-icon {
-          margin-top: 20px;
-          i {
-            display: inline-block;
-            margin-right: 5px;
-            width: 30px;
-            height: 30px;
-            line-height: 30px;
-            border-radius: 5px;
-            background-color: rgba(0, 0, 0, 0.2);
-            color: rgba(255, 255, 255, 0.5);
-            text-align: center;
-            font-size: 14px;
-            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-            transition: all 0.3s ease-out;
-            &:hover {
-              opacity: 8;
-              &.fa-weibo {
-                background-color: #79ac21;
-              }
-              &.fa-tencent-weibo {
-                background-color: #ff664e;
-              }
-              &.fa-qq {
-                background-color: #e05fef;
-              }
-              &.fa-feed {
-                background-color: #00c3f4;
-              }
-              &.fa-wechat {
-                background-color: #f39c12;
-              }
+            opacity: 8;
+            &.fa-weibo {
+              background-color: #79ac21;
+            }
+            &.fa-tencent-weibo {
+              background-color: #ff664e;
+            }
+            &.fa-qq {
+              background-color: #e05fef;
+            }
+            &.fa-feed {
+              background-color: #00c3f4;
+            }
+            &.fa-wechat {
+              background-color: #f39c12;
             }
           }
         }
+      }
     }
   }
 }
 
+@media all and (min-width: 768px) {
+  #artical {
+    ul {
+      li {
+        figure {
+          position: relative;
+          overflow: hidden;
+          .extra {
+            display: block;
+            position: absolute;
+            top: -50px;
+            left: 0;
+            padding: 8px 6px;
+            width: 100%;
+            background-color: #222;
+            color: #fff;
+            transition: top 0.2s cubic-bezier(0.33, 0, 0.2, 1);
+            a {
+              color: rgba(255, 255, 255, 0.9)
+            }
+            span {
+              float: right;
+            }
+            i {
+              margin: 0 4px;
+            }
+          }
+        }
+        &:hover {
+          img {
+            transform: translateY(20px);
+            opacity: .7;
+          }
+          .extra {
+            top: 0;
+          }
+        }
+      }
+    }
+  }
+
+  #gallery {
+    ul {
+      li {
+        width: 25%;
+        position: relative;
+        overflow: hidden;
+        .extra {
+          display: block;
+          position: absolute;
+          bottom: -60px;
+          padding: 8px 10px;
+          width: 100%;
+          background-color: rgba(0, 0, 0, .5);
+          color: #fff;
+          line-height: 18px;
+          h4 {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          .meta {
+            color: rgba(255,255,255,0.65);
+            i {
+              margin-right: 3px;
+            }
+            span {
+              float: right;
+              margin-right: 4px;
+            }
+          }
+        }
+        &:hover {
+          .extra {
+            bottom: 0;
+          }
+        }
+      }
+    }
+  }
+
+  #user {
+    ul li {
+      p.icon-wrap i {
+        width: 80px;
+        height: 80px;
+        line-height: 80px;
+        font-size: 30px;
+      }
+      h3 {
+        font-size: 18px;
+      }
+    }
+  }
+
+
+  #feature {
+    ul li {
+      width: 50%;
+      border-right: 2px solid #fff;
+      &:nth-child(even) {
+        border-right: none;
+      }
+    }
+  }
+
+  #footer {
+    nav {
+      width: 100%;
+    }
+    aside {
+      display: inline-block;
+      width: 10%;
+      vertical-align: top;
+      &#describe {
+        width: 40%;
+        p {
+          padding-right: 20px;
+        }
+      }
+      &#social {
+        width: 28%;
+        input#to {
+          width: 120px;
+        }
+      }
+    }
+    .menu li {
+      display: block;
+    }
+  }
+}
+
+@media all and (min-width: 1024px) {
+  #header {
+    padding: 0 20px;
+    .nav-bar {
+      display: none;
+    }
+    #nav-list {
+      position: relative;
+      display: block;
+      text-align: justify;
+      &::after {
+        content: '';
+        display: inline-block;
+        position: relative;
+        width: 100%;
+        font-size: 0;
+      }
+      li {
+        padding: 0 5px;
+        height: 50px;
+        line-height: 50px;
+        display: inline-block;
+        vertical-align: top;
+        color: rgba(255, 255, 255, .8);
+        font-size: 14px;
+        &.logo {
+          width: 150px;
+          background: url("../img/logo-list.png") no-repeat;
+          background-size: 100%;
+        }
+        &#search {
+          margin-left: 10%;
+        }
+        &#search, &#login {
+          float: right;
+        }
+        &#login {
+          a {
+            display: inline-block;
+            padding: 0 15px;
+            height: 32px;
+            line-height: 32px;
+            vertical-align: middle;
+            background-color: rgba(255,255,255,0.2);
+            font-size: 12px;
+            &:first-child {
+              border-radius: 4px 0 0 4px;
+              margin-right: 2px;
+            }
+            &:last-child {
+              border-radius: 0 4px 4px 0;
+            }
+          }
+        }
+        form {
+          p {
+            position: relative;
+            display: inline-block;
+            padding-left: 32px;
+            height: 32px;
+            vertical-align: middle;
+            border-radius: 4px;
+            overflow: hidden;
+            label, input {
+              display: inline-block;
+              height: 32px;
+              line-height: 32px;
+              vertical-align: top;
+              background-color: transparent;
+              transition: all .3s ease-out;
+            }
+            label {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 32px;
+              text-align: center;
+            }
+            input {
+              width: 0;
+              font: inherit;
+              font-size: 14px;
+              outline: none;
+              border: 0 none;
+              &:focus {
+                width: 150px;
+                background: #fff;
+                color: rgba(0, 0, 0, 0.5);
+                & + label {
+                  background: #fff;
+                  color: rgba(0, 0, 0, 0.5);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #notice {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  #artical {
+    ul {
+      max-width: 1280px;
+      margin: 0% auto;
+    }
+  }
+
+  #gallery {
+    padding:5px 20px 20px;
+    background: url("../img/love-bg.jpg") center bottom no-repeat fixed;
+    background-size: 100%;
+  }
+  
+  #feature {
+    ul {
+      li {
+        width: 25%;
+        &:nth-child(2) {
+          border-right: 2px solid #fff;
+        }
+      }
+    }
+  }
+}
+
+@media all and (min-width: 1320px) {
+  #header {
+    #nav-list {
+      li {
+        a {
+          padding: 0 10px;
+        }
+      }
+      #logo {
+        padding-right: 40px;
+      }
+      li#search {
+        margin-left: 20%;
+      }
+    }
+  }
+}

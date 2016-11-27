@@ -1,4 +1,4 @@
-body, header, footer, section, main, ul, li, div, span, p, i, figure, figcaption, h3, h2 {
+body, header, footer, section, main, ul, li, div, span, p, i, figure, figcaption, h4, h3, h2, input, label {
   margin: 0;
   padding: 0;
   border: 0;
@@ -23,6 +23,6 @@ a {
   color: inherit;
 }
 
-h2, h3 {
+h2, h3, h4 {
   font-weight: normal;
 }

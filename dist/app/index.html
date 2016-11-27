@@ -8,28 +8,35 @@
 </head>
 <body>
 <header id="header" class="">
-    <ul class="nav-bar">
-        <li><i class="fa fa-bars"></i></li>
-        <li id="nav-logo"><a href="#"></a></li>
-        <li><i class="fa fa-user"></i></li>
-    </ul>
-    <ul id="nav-list">
-        <li><a href="#">文章</a></li>
-        <li><a href="#">欣赏</a></li>
-        <li><a href="#">素材</a></li>
-        <li><a href="#">兑换</a></li>
-        <li><a href="#">活动</a></li>
-        <li><a href="#">唯然</a></li>
-        <li><a href="#">更多</a></li>
-        <li><a href="#">
-            <form action="">
-                <p>
-                    <label for="header-search"><i class="fa fa-search"></i></label>
-                    <input type="search" name="search" id="header-search" placeholder="输入搜索内容..."/>
-                </p>
-            </form>
-        </a></li>
-    </ul>
+    <div class="container">
+        <ul class="nav-bar">
+            <li><i class="fa fa-bars"></i></li>
+            <li id="nav-logo"><a href="#"></a></li>
+            <li><i class="fa fa-user"></i></li>
+        </ul>
+        <ul id="nav-list">
+            <li class="logo"></li>
+            <li><a href="#">文章</a></li>
+            <li><a href="#">欣赏</a></li>
+            <li><a href="#">素材</a></li>
+            <li><a href="#">兑换</a></li>
+            <li><a href="#">活动</a></li>
+            <li><a href="#">唯然</a></li>
+            <li><a href="#">更多</a></li>
+            <li id="login">
+                <a href="#">登录</a><!--
+                --><a href="#">注册</a>
+            </li>
+            <li id="search">
+                <form action="">
+                    <p>
+                        <input type="search" name="search" id="header-search" placeholder=""/><!--
+                        --><label for="header-search"><i class="fa fa-search"></i></label>
+                    </p>
+                </form>
+            </li>
+        </ul>
+    </div>
 </header>
 <section id="billboard">
     <div>
@@ -38,26 +45,32 @@
     </div>
 </section>
 <section id="notice">
-    <ul>
-        <span><i class="fa fa-bullhorn"></i></span>
-    </ul>
+    <div class="container">
+        <ul>
+            <span><i class="fa fa-bullhorn"></i></span>
+        </ul>
+    </div>
 </section>
 <section id="aim">
-    <ul id="aim-slide"></ul>
-    <ul class="pagination">
-        <li class="active"></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-    </ul>
+    <div class="container">
+        <ul id="aim-slide"></ul>
+        <ul class="pagination">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
 </section>
 <section id="artical">
     <ul></ul>
 </section>
 <section id="gallery">
-    <ul id="gallery-wrap"></ul>
-    <div>
+    <div class="container">
+        <ul id="gallery-wrap"></ul>
+    </div>
+    <div class="btn">
         <a href="#" class="btn">取悦于灵感 - Love Inspiration
             <i class="fa fa-chevron-circle-right"></i>
         </a>
@@ -91,71 +104,73 @@
     </ul>
 </section>
 <footer id="footer">
-    <nav>
-        <aside id="describe">
-            <h3>觉唯</h3>
-            <p>以用户为中心的设计理念，专注于用户体验设计，拥有国内外最新的设计潮流趋势、独特而美的创意视觉、新颖而灵敏的思维意识、极致而生动的交互体验，更有严谨而通俗的技术教程！</p>
-            <p>唯然是觉唯网的图片分享社区，以记录美丽、分享美好的创意理念，分享高品质创意、艺术、设计、时尚、插画、摄影、唯美类精美图片。</p>
-        </aside>
-        <aside>
-            <h3>关于</h3>
-            <div class="menu-container">
-                <ul class="menu">
-                    <li><a href="#">关于觉唯</a></li>
-                    <li><a href="#">留言联系</a></li>
-                    <li><a href="#">友情链接</a></li>
-                    <li><a href="#">免责声明</a></li>
-                    <li><a href="#">网站地图</a></li>
+    <div class="container">
+        <nav>
+            <aside id="describe">
+                <h3>觉唯</h3>
+                <p>以用户为中心的设计理念，专注于用户体验设计，拥有国内外最新的设计潮流趋势、独特而美的创意视觉、新颖而灵敏的思维意识、极致而生动的交互体验，更有严谨而通俗的技术教程！</p>
+                <p>唯然是觉唯网的图片分享社区，以记录美丽、分享美好的创意理念，分享高品质创意、艺术、设计、时尚、插画、摄影、唯美类精美图片。</p>
+            </aside>
+            <aside>
+                <h3>关于</h3>
+                <div class="menu-container">
+                    <ul class="menu">
+                        <li><a href="#">关于觉唯</a></li>
+                        <li><a href="#">留言联系</a></li>
+                        <li><a href="#">友情链接</a></li>
+                        <li><a href="#">免责声明</a></li>
+                        <li><a href="#">网站地图</a></li>
+                    </ul>
+                </div>
+            </aside>
+            <aside>
+                <h3>栏目</h3>
+                <div class="menu-container">
+                    <ul class="menu">
+                        <li><a href="#">用户体验</a></li>
+                        <li><a href="#">素材下载</a></li>
+                        <li><a href="#">设计欣赏</a></li>
+                        <li><a href="#">主题商店</a></li>
+                        <li><a href="#">唯然灵感</a></li>
+                    </ul>
+                </div>
+            </aside>
+            <aside>
+                <h3>友链</h3>
+                <div class="menu-container">
+                    <ul class="menu">
+                        <li><a href="http://www.qianduan.net/">前端观察</a></li>
+                        <li><a href="http://www.shejidaren.com/">设计达人</a></li>
+                        <li><a href="http://www.maka.im/">MAKA</a></li>
+                    </ul>
+                </div>
+            </aside>
+            <aside id="social">
+                <h3>关注</h3>
+                <ul>
+                    <li>Email: <a href="mailto:javin@jiawin.com">javin@jiawin.com</a></li>
+                    <li class="social-email">
+                        <form>
+                            <div class="social-email">
+                                <input class="email" id="to" name="to" type="email" placeholder="请输入您的邮箱" required="">
+                                <input class="submit" type="submit" value="订阅">
+                            </div>
+                        </form>
+                    </li>
+                    <li class="social-icon">
+                        <a href="#"><i class="fa fa-weibo"></i></a>
+                        <a href="#"><i class="fa fa-tencent-weibo"></i></a>
+                        <a href="#"><i class="fa fa-qq"></i></a>
+                        <a href="#"><i class="fa fa-feed"></i></a>
+                        <a href="#"><i class="fa fa-wechat"></i></a>
+                    </li>
                 </ul>
-            </div>
-        </aside>
-        <aside>
-            <h3>栏目</h3>
-            <div class="menu-container">
-                <ul class="menu">
-                    <li><a href="#">用户体验</a></li>
-                    <li><a href="#">素材下载</a></li>
-                    <li><a href="#">设计欣赏</a></li>
-                    <li><a href="#">主题商店</a></li>
-                    <li><a href="#">唯然灵感</a></li>
-                </ul>
-            </div>
-        </aside>
-        <aside>
-            <h3>友链</h3>
-            <div class="menu-container">
-                <ul class="menu">
-                    <li><a href="http://www.qianduan.net/">前端观察</a></li>
-                    <li><a href="http://www.shejidaren.com/">设计达人</a></li>
-                    <li><a href="http://www.maka.im/">MAKA</a></li>
-                </ul>
-            </div>
-        </aside>
-        <aside id="social">
-            <h3>关注</h3>
-            <ul>
-                <li>Email: <a href="mailto:javin@jiawin.com">javin@jiawin.com</a></li>
-                <li class="social-email">
-                    <form>
-                        <div class="social-email">
-                            <input class="email" id="to" name="to" type="email" placeholder="请输入您的邮箱" required="">
-                            <input class="submit" type="submit" value="订阅">
-                        </div>
-                    </form>
-                </li>
-                <li class="social-icon">
-                    <a href="#"><i class="fa fa-weibo"></i></a>
-                    <a href="#"><i class="fa fa-tencent-weibo"></i></a>
-                    <a href="#"><i class="fa fa-qq"></i></a>
-                    <a href="#"><i class="fa fa-feed"></i></a>
-                    <a href="#"><i class="fa fa-wechat"></i></a>
-                </li>
-            </ul>
-        </aside>
-    </nav>
-    <p>
-        Copyright © 2012-2016 <a href="#">觉唯设计</a> Theme by Javin zhong All All Rights Reserved. 粤ICP备12073831号-1
-    </p>
+            </aside>
+        </nav>
+        <p>
+            Copyright © 2012-2016 <a href="#">觉唯设计</a> Theme by Javin zhong All All Rights Reserved. 粤ICP备12073831号-1
+        </p>
+    </div>
 </footer>
 <script src="../js/bundle.js" charset="utf-8"></script>
 </body>

@@ -271,11 +271,17 @@
 	template('artical-item',function($data,$filename
 	/**/) {
 	'use strict';var $utils=this,$helpers=$utils.$helpers,$each=$utils.$each,data=$data.data,value=$data.value,$index=$data.$index,$escape=$utils.$escape,$out='';$each(data,function(value,$index){
-	$out+=' <li> <a href="#"> <figure> <img src="';
+	$out+=' <li> <figure> <a href="#"> <div class="img-wrap"><img src="';
 	$out+=$escape(value.src);
-	$out+='" alt=""> <figcaption> ';
+	$out+='" alt="';
 	$out+=$escape(value.title);
-	$out+=' </figcaption> </figure> </a> <p> <time class="time">';
+	$out+='"></div> <figcaption> ';
+	$out+=$escape(value.title);
+	$out+=' </figcaption> <div class="extra"> <i class="fa fa-bookmark"></i> <a href="#">';
+	$out+=$escape(value.category);
+	$out+='</a> <span>';
+	$out+=$escape(value.viewNum);
+	$out+=' <i class="fa fa-fire"></i> </span> </div> </a> </figure> <p> <time class="time">';
 	$out+=$escape(value.time);
 	$out+='</time> <span><i class="fa fa-comment"></i>';
 	$out+=$escape(value.commentNum);
@@ -292,7 +298,17 @@
 	$out+=$escape(value.src);
 	$out+='" alt="';
 	$out+=$escape(value.title);
-	$out+='"> <figcaption><i class="fa fa-link"></i></figcaption> </figure> </li> ';
+	$out+='"> <figcaption><i class="fa fa-link"></i></figcaption> </figure> <div class="extra"> <h4> <a href="#">';
+	$out+=$escape(value.title);
+	$out+='</a> </h4> <p class="meta"> <time class="time">';
+	$out+=$escape(value.time);
+	$out+='</time> <span class="comment-num"><i class="fa fa-comment-o"></i>';
+	$out+=$escape(value.commentNum);
+	$out+='</span> <span class="view-num"><i class="fa fa-eye"></i>';
+	$out+=$escape(value.viewNum);
+	$out+='</span> <span class="heart-num"><i class="fa fa-heart-o"></i>';
+	$out+=$escape(value.heartNum);
+	$out+='</span> </p> </div> </li> ';
 	});
 	$out+=' ';
 	return new String($out);
