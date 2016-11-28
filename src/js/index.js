@@ -6,9 +6,7 @@ var template = require('./template');
         console.log(e);
         var self = e.currentTarget;
         var wrap = document.createElement('div');
-        wrap.innerHTML = template(self.tplName, {
-            data: self.response
-        });
+        wrap.innerHTML = template(self.tplName, self.response);
         while (wrap.firstElementChild) {
             document.querySelector(self.queryEle).appendChild(wrap.firstElementChild);
         }

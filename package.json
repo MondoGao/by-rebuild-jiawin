@@ -1,11 +1,11 @@
 {
   "name": "task0",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "task0",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://git.bingyan.net/"
+    "url": "https://git.bingyan.net/dabaobao/FE.git"
   },
   "scripts": {
     "start": "gulp"

@@ -28,7 +28,7 @@ var _getPage = function(req, res, pageUrl, queryEle, titleEle) { // 请求，回
                     }
                 }
             });
-            res.write(JSON.stringify(data));
+            res.write(JSON.stringify({"data": data}));
             res.end();
         });
 }
