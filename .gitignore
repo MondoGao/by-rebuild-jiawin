@@ -45,6 +45,3 @@ jspm_packages
 
 # Output of 'npm pack'
 *.tgz
-server/
-src/js/
-src/scss/
